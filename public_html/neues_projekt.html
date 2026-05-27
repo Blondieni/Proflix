@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+
+<html lang="de">
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Hier wird ein neues Projekt erstellt">
+        
+        <title>Neues Projekt</title>
+    </head>
+    
+    <body id="seitenanfang">
+        
+        <header>
+            <picture>
+                <source media="(min-width: 1920px)" srcset="header1920x200.png">
+    
+                <source media="(min-width: 1280px)" srcset="header1280x133.png">
+    
+                <source media="(min-width: 640px)" srcset="header640x67.png">
+    
+                <img src="header320x34.png" alt="header">
+            </picture> 
+        </header>
+
+        <nav>
+            
+            <ul>
+                
+                <li>
+                    
+                    <a href="index.html">
+                        
+                        <img src="startseite.svg" alt="Startseite">
+                        
+                    </a>
+                    
+                </li>
+                <li>
+                    <a href="projekte.html">Projekte</a>
+                </li>
+                <li>
+                    <a href="neues_projekt.html">Neues Projekt</a>
+                </li>
+            </ul>
+        </nav>
+
+        <section>
+            <section>
+                <h1>Neues Projekt anlegen</h1>
+                <p>Füllen Sie das Formular aus, um ein neues Projekt in Proflix einzustellen.</p>
+
+                <form action="ziel.html" method="POST">
+
+                    <fieldset>
+                        <legend>Allgemeine Informationen</legend>
+
+                        <label for="titel">Projekttitel:</label><br>
+                        <input type="text" id="titel" name="titel"><br><br>
+
+                        <label for="start">Startdatum:</label><br>
+                        <input type="date" id="start" name="start"><br><br>
+
+                        <label for="ende">Enddatum:</label><br>
+                        <input type="date" id="ende" name="ende"><br><br>
+                    </fieldset>
+
+                    <br>
+
+                    <fieldset>
+                        <legend>Projektbeschreibungen</legend>
+
+                        <label for="kurz">Kurzbeschreibung:</label><br>
+                        <textarea id="kurz" name="kurz" rows="2" cols="40"></textarea><br><br>
+
+                        <label for="lang">Langbeschreibung:</label><br>
+                        <textarea id="lang" name="lang" rows="5" cols="40"></textarea><br><br>
+                    </fieldset>
+
+                    <br>
+
+                    <fieldset>
+                        <legend>Projektziele (2 Angaben möglich)</legend>
+
+                        <label for="ziel1">Ziel 1:</label><br>
+                        <input type="text" id="ziel1" name="ziel1"><br><br>
+
+                        <label for="ziel2">Ziel 2:</label><br>
+                        <input type="text" id="ziel2" name="ziel2"><br><br>
+                    </fieldset>
+
+                    <br>
+
+                    <fieldset>
+                        <legend>Mediendateien</legend>
+
+                        <label for="logo">Logodatei auswählen:</label><br>
+                        <input type="file" id="logo" name="logo"><br><br>
+                    </fieldset>
+
+                    <br>
+
+                    <input type="submit" value="Projekt speichern">
+                </form>
+            </section>
+        </section>
+
+        <footer>
+            
+            <section>
+                
+                <h3>Login</h3>
+                
+                <form action="ziel.html" method="POST">
+                    
+                    <label for="benutzername">Benutzername:</label>
+                    
+                    <input type="text" id="benutzername" name="benutzername">
+                    <br>
+                    
+                    <label for="passwort">Passwort:</label>
+                    <input type="password" id="passwort" name="passwort">
+                    <br><br>
+                    
+                    <button type="submit">Einloggen</button>
+                </form>
+                
+                <p>Noch kein Konto? <a href="registrieren.html">Neu Registrieren</a></p>
+            </section>
+
+            <hr> <section>
+                <p>
+                    <a href="impressum.html">Impressum</a> | 
+                    <a href="datenschutz.html">Datenschutzerklärung</a> | 
+                    <a href="haftungsausschluss.html">Haftungsausschluss</a>
+                </p>
+                
+                <p>&copy; 2026 Proflix | Kontakt: dennis.voss@hsbi.de / jana.wortmann@hsbi.de</p>
+
+                <p><a href="#seitenanfang">Zurück zum Anfang der Seite</a></p>
+            </section>
+            
+        </footer>
+
+    </body>
+</html>

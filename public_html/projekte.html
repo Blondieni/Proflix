@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<html lang="de">
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Übersicht über alle Projekte">
+        
+        <title>Projektübersichtseite</title>
+    </head>
+    
+    <body id="seitenanfang">
+        
+        <header>
+            <picture>
+                <source media="(min-width: 1920px)" srcset="header1920x200.png">
+    
+                <source media="(min-width: 1280px)" srcset="header1280x133.png">
+    
+                <source media="(min-width: 640px)" srcset="header640x67.png">
+    
+                <img src="header320x34.png" alt="header">
+            </picture> 
+        </header>
+
+        <nav>
+            
+            <ul>
+                
+                <li>
+                    
+                    <a href="index.html">
+                        
+                        <img src="startseite.svg" alt="Startseite">
+                        
+                    </a>
+                    
+                </li>
+                <li>
+                    <a href="projekte.html">Projekte</a>
+                </li>
+                <li>
+                    <a href="neues_projekt.html">Neues Projekt</a>
+                </li>
+            </ul>
+        </nav>
+        <section>
+            <h1>Projektübersicht</h1>
+
+            <section>
+                <h2>Inhalts-Menü</h2>
+                <ul>
+                    <li><a href="#projekt1">Brunsmann Präsentation</a></li>
+                    <li><a href="#projekt2">Programmieren</a></li>
+                </ul>
+            </section>
+
+            <br>
+
+            <article id="projekt1">
+                <h2>Brunsmann Projekt</h2>
+                <p>Kurzbeschreibung: Hier geht es um eine freiwilige Präsentation zur Teamarbeit.</p>
+                <a href="projektseite.html">Zur Projektseite</a>
+            </article>
+
+            <br>
+
+            <article id="projekt2">
+                <h2>Programmieren</h2>
+                <p>Kurzbeschreibung: Blondies kleines Programmiertagebuch.</p>
+                <a href="projektseite.html">Zur Projektseite</a>
+            </article>
+
+        </section>
+
+
+        <footer>
+            
+            <section>
+                
+                <h3>Login</h3>
+                
+                <form action="ziel.html" method="POST">
+                    
+                    <label for="benutzername">Benutzername:</label>
+                    
+                    <input type="text" id="benutzername" name="benutzername">
+                    <br>
+                    
+                    <label for="passwort">Passwort:</label>
+                    <input type="password" id="passwort" name="passwort">
+                    <br><br>
+                    
+                    <button type="submit">Einloggen</button>
+                </form>
+                
+                <p>Noch kein Konto? <a href="registrieren.html">Neu Registrieren</a></p>
+            </section>
+
+            <hr> <section>
+                <p>
+                    <a href="impressum.html">Impressum</a> | 
+                    <a href="datenschutz.html">Datenschutzerklärung</a> | 
+                    <a href="haftungsausschluss.html">Haftungsausschluss</a>
+                </p>
+                
+                <p>&copy; 2026 Proflix | Kontakt: dennis.voss@hsbi.de / jana.wortmann@hsbi.de</p>
+
+                <p><a href="#seitenanfang">Zurück zum Anfang der Seite</a></p>
+            </section>
+            
+        </footer>
+
+    </body>
+</html>

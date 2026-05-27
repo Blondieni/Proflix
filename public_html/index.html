@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Startseite von Proflix">
+        <title>Startseite</title>
+    </head>
+    <body id="seitenanfang">
+        
+        <header>
+            <picture>
+                <source media="(min-width: 1920px)" srcset="header1920x200.png">
+    
+                <source media="(min-width: 1280px)" srcset="header1280x133.png">
+    
+                <source media="(min-width: 640px)" srcset="header640x67.png">
+    
+                <img src="header320x34.png" alt="header">
+            </picture> 
+        </header>
+
+        <nav>
+            <ul>
+                <li>
+                    <a href="index.html">
+                        <img src="startseite.svg" alt="Startseite">
+                    </a>
+                </li>
+                <li>
+                    <a href="projekte.html">Projekte</a>
+                </li>
+                <li>
+                    <a href="neues_projekt.html">Neues Projekt</a>
+                </li>
+            </ul>
+        </nav>
+
+        <section>
+            <section>
+                <h1>Spannende Projekte von Blondie und Esel<br> Spaß an html</h1>
+            </section>
+            <section>
+                <h2> Was ist Proflix</h2>
+                <p>
+                    Proflix dient der Verwaltung unserer Projekte.
+                    Hier hast du alles wichtige auf einen Blick!
+                </p>
+                
+                <video width="640" height="360" controls>
+                    <source src="video.mp4" type="video/mp4">
+                    Browser kann das Video nicht abspielen.
+                </video>
+            </section>
+            <section>
+                <h2>Neueste Projekte</h2>
+                <ul>
+                    <li>
+                        <h3><a href="projektseite.html">Projekt A</a></h3>
+                        <p>Das ist unser neuestes Projekt</p>
+                    </li>
+                    <li>
+                        <h3><a href="projektseite.html">Projekt B</a></h3>
+                        <p>Das ist nicht unser neuestes Projekt, aber immernoch recht neu</p>
+                    </li>
+                </ul>
+            </section>
+            
+            
+        </section>
+
+        <footer>
+            <section>
+                <h3>Login</h3>
+                <form action="ziel.html" method="POST">
+                    <label for="benutzername">Benutzername:</label>
+                    <input type="text" id="benutzername" name="benutzername">
+                    <br>
+                    <label for="passwort">Passwort:</label>
+                    <input type="password" id="passwort" name="passwort">
+                    <br><br>
+                    <button type="submit">Einloggen</button>
+                </form>
+                <p>Noch kein Konto? <a href="registrieren.html">Neu Registrieren</a></p>
+            </section>
+
+            <hr> <section>
+                <p>
+                    <a href="impressum.html">Impressum</a> | 
+                    <a href="datenschutz.html">Datenschutzerklärung</a> | 
+                    <a href="haftungsausschluss.html">Haftungsausschluss</a>
+                </p>
+                <p>&copy; 2026 Proflix | Kontakt: dennis.voss@hsbi.de / jana.wortmann@hsbi.de</p>
+
+                <p><a href="#seitenanfang">Zurück zum Anfang der Seite</a></p>
+            </section>
+            
+        </footer>
+
+    </body>
+</html>

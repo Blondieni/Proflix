@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<html lang="de">
+    
+    <!-- Kopfbereich -->
+    <head>
+        
+        <!-- Metadaten für Displaygröße, beschreibung und Inhalt -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Vorlage für alle Seiten">
+        
+        <!-- Titel auf Tabseite -->
+        <title>Vorlage</title>
+    </head>
+    
+    <!-- Kopfzeile -->
+    <body id="seitenanfang">
+        
+        <header>
+            <picture>
+                <source media="(min-width: 1920px)" srcset="header1920x200.png">
+    
+                <source media="(min-width: 1280px)" srcset="header1280x133.png">
+    
+                <source media="(min-width: 640px)" srcset="header640x67.png">
+    
+                <img src="header320x34.png" alt="header">
+            </picture> 
+        </header>
+
+        <!-- Navigation -->
+        <nav>
+            
+            <!-- unsortierte Liste -->
+            <ul>
+                
+                <!-- Liste -->
+                <li>
+                    
+                    <!-- Link zum weiterleiten -->
+                    <a href="index.html">
+                        
+                        <!-- Logo für Startseite, alternativ Text "Startseite" -->
+                        <img src="startseite.svg" alt="Startseite">
+                        
+                    </a>
+                    
+                </li>
+                <li>
+                    <a href="projekte.html">Projekte</a>
+                </li>
+                <li>
+                    <a href="neues_projekt.html">Neues Projekt</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Hauptinhalt -->
+        <section>
+        </section>
+
+        <!-- Fußzeile -->
+        <footer>
+            
+            <!-- Abschnitt für den Login Bereich -->
+            <section>
+                
+                <h3>Login</h3>
+                
+                <!-- sendet Daten per POST -->
+                <form action="ziel.html" method="POST"> 
+                    
+                    <!-- Beschriftung für das Benutzernamen Feld -->
+                    <label for="benutzername">Benutzername:</label>
+                    
+                    <!-- Eingabefeld für das Benutzername Feld -->
+                    <input type="text" id="benutzername" name="benutzername">
+                    <br>
+                    
+                    <label for="passwort">Passwort:</label>
+                    <input type="password" id="passwort" name="passwort">
+                    <br><br>
+                    
+                   <!-- Button zum Absenden des Formulars -->
+                    <button type="submit">Einloggen</button>
+                </form>
+                
+                <!-- Textabsatz -->
+                <p>Noch kein Konto? <a href="registrieren.html">Neu Registrieren</a></p>
+            </section>
+
+            <!-- Trennstrich -->
+            <hr> <section>
+                <p>
+                    <!-- Links -->
+                    <a href="impressum.html">Impressum</a> | 
+                    <a href="datenschutz.html">Datenschutzerklärung</a> | 
+                    <a href="haftungsausschluss.html">Haftungsausschluss</a>
+                </p>
+                
+               <!-- Textabsatz für Copyright und E-Mails -->
+                <p>&copy; 2026 Proflix | Kontakt: dennis.voss@hsbi.de / jana.wortmann@hsbi.de</p>
+
+                <!-- Links um nach oben zu springen -->
+                <p><a href="#seitenanfang">Zurück zum Anfang der Seite</a></p>
+            </section>
+            
+        </footer>
+
+    </body>
+</html>
