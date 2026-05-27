@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+
+<html lang="de">
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Ein detailiertes Projekt">
+        
+        <title>Projekt: Programmiertagebuch</title>
+    </head>
+    
+    <body id="seitenanfang">
+        
+        <header>
+            <picture>
+                <source media="(min-width: 1920px)" srcset="header1920x200.png">
+    
+                <source media="(min-width: 1280px)" srcset="header1280x133.png">
+    
+                <source media="(min-width: 640px)" srcset="header640x67.png">
+    
+                <img src="header320x34.png" alt="header">
+            </picture> 
+        </header>
+
+        <nav>
+            
+            <ul>
+                
+                <li>
+                    
+                    <a href="index.html">
+                        
+                        <img src="startseite.svg" alt="Startseite">
+                        
+                    </a>
+                    
+                </li>
+                <li>
+                    <a href="projekte.html">Projekte</a>
+                </li>
+                <li>
+                    <a href="neues_projekt.html">Neues Projekt</a>
+                </li>
+            </ul>
+        </nav>
+
+        <section>
+            <section>
+                <h1>Projektdetails</h1>
+
+                <section>
+                    <h2>Inhalts-Menü</h2>
+                    <ul>
+                        <li><a href="#kurzbeschreibung">Kurzbeschreibung</a></li>
+                        <li><a href="#langbeschreibung">Langbeschreibung</a></li>
+                        <li><a href="#ziele">Projektziele</a></li>
+                        <li><a href="#bewertung">Bewertung & Kommentar</a></li>
+                    </ul>
+                </section>
+
+                <hr>
+
+                <article>
+                    <img src="logo_projekt.svg" alt="Programmiertagebuch">
+
+                    <h2>Programmieren</h2>
+                    <p><strong>Projektleiter:</strong> Blondie</p>
+                </article>
+                
+                <br>
+
+                <section id="kurzbeschreibung">
+                    <h3>Kurzbeschreibung</h3>
+                    <p>
+                        Ein kleines digitales Tagebuch, um die wichtigsten Fortschritte, Fehler und Lösungen beim Programmieren festzuhalten.
+                    </p>
+                </section>
+
+                <br>
+
+                <section id="langbeschreibung">
+                    <h3>Langbeschreibung</h3>
+                    <p>
+                        In diesem Tagebuch schreibt Blondie regelmäßig auf, was beim Lernen von HTML und CSS gut geklappt hat und wo es Probleme gab. Es dient als einfache Gedankenstütze und Nachschlagewerk für die kommenden Übungsblätter, damit man typische Fehler schnell beheben kann.
+                    </p>
+                </section>
+
+                <br>
+
+                <section id="ziele">
+                    <h3>Projektziele</h3>
+                    <ol>
+                        <li>Regelmäßiges Aufschreiben von nützlichen Code-Ausschnitten nach jedem Praktikum.</li>
+                        <li>Schnelleres Finden von Lösungen bei Fehlermeldungen durch eine saubere Übersicht.</li>
+                    </ol>
+                </section>
+                <section id="bewertung">
+                    <h3>Bewertung & Kommentar</h3>
+
+                    <form action="ziel.html" method="POST">
+
+                        <label for="kommentar">Ihr Kommentar:</label><br>
+                        <textarea id="kommentar" name="kommentar" rows="4" cols="40"></textarea>
+
+                        <br><br>
+
+                        <label for="bewertungspunktzahl">Bewertung (1 bis 5):</label><br>
+                        <input type="number" id="bewertungspunktzahl" name="bewertungspunktzahl" min="1" max="5" value="5">
+
+                        <br><br>
+
+                        <input type="submit" value="Bewertung absenden">
+
+                    </form>
+                </section>
+
+            </section>
+        </section>
+
+        <footer>
+            
+            <section>
+                
+                <h3>Login</h3>
+                
+                <form action="ziel.html" method="POST">
+                    
+                    <label for="benutzername">Benutzername:</label>
+                    
+                    <input type="text" id="benutzername" name="benutzername">
+                    <br>
+                    
+                    <label for="passwort">Passwort:</label>
+                    <input type="password" id="passwort" name="passwort">
+                    <br><br>
+                    
+                    <button type="submit">Einloggen</button>
+                </form>
+                
+                <p>Noch kein Konto? <a href="registrieren.html">Neu Registrieren</a></p>
+            </section>
+
+            <hr> <section>
+                <p>
+                    <a href="impressum.html">Impressum</a> | 
+                    <a href="datenschutz.html">Datenschutzerklärung</a> | 
+                    <a href="haftungsausschluss.html">Haftungsausschluss</a>
+                </p>
+                
+                <p>&copy; 2026 Proflix | Kontakt: dennis.voss@hsbi.de / jana.wortmann@hsbi.de</p>
+
+                <p><a href="#seitenanfang">Zurück zum Anfang der Seite</a></p>
+            </section>
+            
+        </footer>
+
+    </body>
+</html>
