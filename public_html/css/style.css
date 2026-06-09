@@ -1,0 +1,138 @@
+/* body umschließt den gesamten Sichtbaren Inhalt einer Website*/
+body {
+    background-color: #F5FFFA;
+    
+    /* Abstände entfernen */
+    margin: 0;
+    padding: 0;
+    
+    /* Verhindert ungewollte horizontale Scrollbalken */
+    overflow-x: hidden;
+}
+
+a[href="#seitenanfang"] {
+    /* Link bleibt beim scrollen fest am Platz */
+    position: fixed;
+    
+    /* Abstand zum Rand */
+    bottom: 10px;
+    right: 10px;
+    background-color: #87CEFA;
+    color: black;
+    /* Innenabstand */
+    padding: 10px;
+    
+    /* entfernt Standart-Unterschreichung */
+    text-decoration: none;
+
+    /* macht Ecken rund */
+    border-radius: 20px;
+    
+    /* Buttom ist im Vordergrund */
+    z-index: 100;
+}
+
+header {
+    /* Positionierung der Login Box */
+    position: relative;
+}
+
+.login-box {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #E6F2FF;
+    
+    /* umrandung */
+    border: 1px solid #B0C4DE;
+    padding: 15px;
+    border-radius: 8px;
+    
+    /* Setzt die Eingabefelder und Texte nach rechts */
+    text-align: right;
+    z-index: 10;
+}
+
+/* abstand zwischen den Eingabefelder */
+.login-box input {
+    margin-bottom: 5px;
+}
+
+/* schwarzes Navigationsmenü mit blauer Rahmenlinie */
+nav {
+    background-color: black;
+    
+    /* Trennlinie*/
+    border-bottom: 3px solid #00BFFF;
+}
+
+nav ul {
+    /* Listenpunkte sind nebeneinander*/
+    display: flex;
+    margin: 0;
+    padding: 0;
+    
+     /* entfernt typischen Aufzählungspunkte */
+    list-style-type: none;
+}
+
+/* Abstand zwischen Listenpunkte */
+nav li {
+    margin-right: 20px; 
+}
+
+/* Styling der Links im Menü */
+nav a {
+    /* kombieniert Text und Block Element */
+    display: inline-block;
+    color: white;
+    
+    /* 1.5-fache Schriftgröße */
+    font-size: 1.5em;
+    
+    /* Fett gedruckt */
+    font-weight: bold;
+    
+    /* entfernt die Unterstreichung */
+    text-decoration: none;
+    
+    /* Innenabstand, damit man die Links gut anklicken kann */
+    padding: 10px 15px;
+}
+
+/* Hover: Hintergrundfarbe ändert sich beim Drüberfahren */
+nav a:hover {
+    background-color: #87CEFA;
+    
+     /* Textfarbe auf Schwarz wechseln für besseren Kontrast */
+    color: black;
+}
+
+footer {
+    background-color: black;
+    
+    /* Weiße Textfarbe */
+    color: white;
+    
+    /* Zentriert alle Texte und Links */
+    text-align: center;
+    
+    /* Innenabstand*/
+    padding: 20px;
+    
+    /* Abstand nach oben*/
+    margin-top: 40px;
+}
+
+/* weiße Links*/
+footer a {
+    color: white;
+    
+     /* Unterstreichung*/
+    text-decoration: underline;
+}
+
+/* wird blau beim Drüberfahren */
+footer a:hover {
+    color: #87CEFA;
+}

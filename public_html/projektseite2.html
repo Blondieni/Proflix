@@ -8,7 +8,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Ein detailiertes Projekt">
         
-        <title>Projekt: Programmiertagebuch</title>
+        <title>Projekte</title>
+        <link rel="stylesheet" type="text/css" href="css\style.css">
+        <link rel="stylesheet" type="text/css" href="css\projektseite.css">
     </head>
     
     <body id="seitenanfang">
@@ -23,6 +25,27 @@
     
                 <img src="header320x34.png" alt="header">
             </picture> 
+            
+            <section class="login-box">
+                
+                <h3>Login</h3>
+                
+                <form action="ziel.html" method="POST">
+                    
+                    <label for="benutzername">Benutzername:</label>
+                    
+                    <input type="text" id="benutzername" name="benutzername">
+                    <br>
+                    
+                    <label for="passwort">Passwort:</label>
+                    <input type="password" id="passwort" name="passwort">
+                    <br><br>
+                    
+                    <button type="submit">Einloggen</button>
+                </form>
+                
+                <p>Noch kein Konto? <a href="registrieren.html">Neu Registrieren</a></p>
+            </section>
         </header>
 
         <nav>
@@ -48,10 +71,9 @@
         </nav>
 
         <section>
-            <section>
-                <h1>Projektdetails</h1>
-
-                <section>
+            <section class="projekt-detail-layout">
+            
+                <section class="inhalts-menue">
                     <h2>Inhalts-Menü</h2>
                     <ul>
                         <li><a href="#kurzbeschreibung">Kurzbeschreibung</a></li>
@@ -63,13 +85,15 @@
 
                 <hr>
 
-                <article>
-                    <img src="logo_projekt.svg" alt="Programmiertagebuch">
+                <section class="projekt-inhalt">
+                <h1>Projektdetails</h1>
 
-                    <h2>Programmieren</h2>
-                    <p><strong>Projektleiter:</strong> Blondie</p>
-                </article>
-                
+                <section class="projekt-header-box">
+                    <img src="logo_projekt.svg" alt="logo">
+                    <h2 class="projekt-titel">Programmieren</h2>
+                    <p class="projektleiter">Projektleiter: Blondie</p>
+                </section>
+
                 <br>
 
                 <section id="kurzbeschreibung">
@@ -93,7 +117,7 @@
                 <section id="ziele">
                     <h3>Projektziele</h3>
                     <ol>
-                        <li>Regelmäßiges Aufschreiben von nützlichen Code-Ausschnitten nach jedem Praktikum.</li>
+                        <li>Regelmäßiges Aufschreiben von nützlichen Code-Ausschnitten nach jedem Praktikum</li>
                         <li>Schnelleres Finden von Lösungen bei Fehlermeldungen durch eine saubere Übersicht.</li>
                     </ol>
                 </section>
@@ -122,26 +146,7 @@
 
         <footer>
             
-            <section>
-                
-                <h3>Login</h3>
-                
-                <form action="ziel.html" method="POST">
-                    
-                    <label for="benutzername">Benutzername:</label>
-                    
-                    <input type="text" id="benutzername" name="benutzername">
-                    <br>
-                    
-                    <label for="passwort">Passwort:</label>
-                    <input type="password" id="passwort" name="passwort">
-                    <br><br>
-                    
-                    <button type="submit">Einloggen</button>
-                </form>
-                
-                <p>Noch kein Konto? <a href="registrieren.html">Neu Registrieren</a></p>
-            </section>
+            
 
             <hr> <section>
                 <p>

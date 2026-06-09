@@ -9,6 +9,9 @@
         <meta name="description" content="Hier wird ein neues Projekt erstellt">
         
         <title>Neues Projekt</title>
+        <link rel="stylesheet" type="text/css" href="css\style.css">
+        <link rel="stylesheet" type="text/css" href="css\projektseite.css">
+        <link rel="stylesheet" type="text/css" href="css\neues_projekt.css">
     </head>
     
     <body id="seitenanfang">
@@ -23,6 +26,28 @@
     
                 <img src="header320x34.png" alt="header">
             </picture> 
+            
+            <section class="login-box">
+                
+                <h3>Login</h3>
+                
+                <form action="ziel.html" method="POST">
+                    
+                    <label for="benutzername">Benutzername:</label>
+                    
+                    <input type="text" id="benutzername" name="benutzername">
+                    <br>
+                    
+                    <label for="passwort">Passwort:</label>
+                    <input type="password" id="passwort" name="passwort">
+                    <br><br>
+                    
+                    <button type="submit">Einloggen</button>
+                </form>
+                
+                <p>Noch kein Konto? <a href="registrieren.html">Neu Registrieren</a></p>
+            </section>
+            
         </header>
 
         <nav>
@@ -47,15 +72,26 @@
             </ul>
         </nav>
 
-        <section>
-            <section>
+        <section class="projekt-detail-layout">
+
+            <section class="inhalts-menue">
+                <h2>Inhalts-Menü</h2>
+                <ul>
+                    <li><a href="#allgemein">Allgemeine Infos</a></li>
+                    <li><a href="#beschreibungen">Projektbeschreibungen</a></li>
+                    <li><a href="#ziele">Projektziele</a></li>
+                    <li><a href="#medien">Mediendateien</a></li>
+                </ul>
+            </section>
+
+            <section class="projekt-inhalt">
                 <h1>Neues Projekt anlegen</h1>
                 <p>Füllen Sie das Formular aus, um ein neues Projekt in Proflix einzustellen.</p>
 
                 <form action="ziel.html" method="POST">
-
-                    <fieldset>
-                        <legend>Allgemeine Informationen</legend>
+                    
+                    <fieldset id="allgemein">
+                        <legend>Allgemeine Infos</legend>
 
                         <label for="titel">Projekttitel:</label><br>
                         <input type="text" id="titel" name="titel"><br><br>
@@ -69,66 +105,48 @@
 
                     <br>
 
-                    <fieldset>
+                    <fieldset id="beschreibungen">
                         <legend>Projektbeschreibungen</legend>
 
                         <label for="kurz">Kurzbeschreibung:</label><br>
-                        <textarea id="kurz" name="kurz" rows="2" cols="40"></textarea><br><br>
+                        <textarea id="kurz" name="kurz" rows="2" class="full-width-input"></textarea><br><br>
 
                         <label for="lang">Langbeschreibung:</label><br>
-                        <textarea id="lang" name="lang" rows="5" cols="40"></textarea><br><br>
+                        <textarea id="lang" name="lang" rows="5" class="full-width-input"></textarea><br><br>
                     </fieldset>
 
                     <br>
 
-                    <fieldset>
+                    <fieldset id="ziele">
                         <legend>Projektziele (2 Angaben möglich)</legend>
 
                         <label for="ziel1">Ziel 1:</label><br>
-                        <input type="text" id="ziel1" name="ziel1"><br><br>
+                        <input type="text" id="ziel1" name="ziel1" class="full-width-input"><br><br>
 
                         <label for="ziel2">Ziel 2:</label><br>
-                        <input type="text" id="ziel2" name="ziel2"><br><br>
+                        <input type="text" id="ziel2" name="ziel2" class="full-width-input"><br><br>
                     </fieldset>
 
                     <br>
 
-                    <fieldset>
+                    <fieldset id="medien">
                         <legend>Mediendateien</legend>
 
-                        <label for="logo">Logodatei auswählen:</label><br>
+                        <label for="logo" class="bild-platzhalter">Bild hochladen</label><br>
                         <input type="file" id="logo" name="logo"><br><br>
                     </fieldset>
 
                     <br>
 
-                    <input type="submit" value="Projekt speichern">
+                    <input type="submit" value="Projekt speichern" class="speichern-button">
                 </form>
             </section>
+
         </section>
 
         <footer>
             
-            <section>
-                
-                <h3>Login</h3>
-                
-                <form action="ziel.html" method="POST">
-                    
-                    <label for="benutzername">Benutzername:</label>
-                    
-                    <input type="text" id="benutzername" name="benutzername">
-                    <br>
-                    
-                    <label for="passwort">Passwort:</label>
-                    <input type="password" id="passwort" name="passwort">
-                    <br><br>
-                    
-                    <button type="submit">Einloggen</button>
-                </form>
-                
-                <p>Noch kein Konto? <a href="registrieren.html">Neu Registrieren</a></p>
-            </section>
+            
 
             <hr> <section>
                 <p>

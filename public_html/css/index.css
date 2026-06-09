@@ -1,0 +1,119 @@
+.welcome-banner {
+    background-color: black;
+    width: 100%;
+    height: 500px;
+    
+    /* Flexbox Layout */
+    display: flex;
+    
+    /* horizontal zentriert */
+    justify-content: center;
+        
+    /* vertikal zentriert */
+    align-items: center;
+    
+    /* Zeilenumbruch bleibt zentriert */
+    text-align: center;
+}
+
+.welcome-banner h1 {
+    color: white;
+    
+     /* sehr große Schriftart */
+    font-size: 3em;
+    
+    /* entfernt Standard-Abstände der Überschrift */
+    margin: 0; 
+    
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    margin: 0;
+    color: white;
+    font-size: 3em;
+}
+
+.startseite-layout {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 40px;
+}
+
+.beschreibung, .projekte-navigation {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.beschreibung video {
+    max-width: 100%;
+    height: auto;
+}
+
+.projekte-navigation {
+    background-color: #ffffff;
+    border-bottom: none;
+}
+
+.projekte-navigation ul {
+    display: block;
+}
+
+.projekte-navigation a {
+    color: #00BFFF;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-decoration: underline;
+    padding: 0;
+    background: none;
+}
+
+.projekte-navigation a:hover {
+    background-color: transparent;
+    color: #87CEFA;
+}
+.welcome-text {
+    position: relative;
+    width: 100%;
+    height: 100px;
+}
+
+
+/* Zeile 1: startet und verschwindet */
+.line-1 {
+    animation-name: fadeOut;
+    animation-duration: 4s;
+    
+    /* bleibt am Ende unsichtbar */
+    animation-fill-mode: forwards; 
+}
+
+/* Zeile 2: Startet unsichtbar, wird dann eingeblendet */
+.line-2 {
+    opacity: 0;
+    animation-name: fadeIn;
+    animation-duration: 4s;
+    
+    /* wartet auf Zeile 1 */
+    animation-delay: 2s;
+    
+    /* bleibt am Ende sichtbar */
+    animation-fill-mode: forwards;
+}
+
+/* Animations-Regeln */
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}

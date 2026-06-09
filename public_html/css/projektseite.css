@@ -1,0 +1,124 @@
+/*Das zweispaltige Layout*/
+.projekt-detail-layout {
+    display: flex;                 
+    flex-direction: row;           
+    align-items: flex-start;       
+    gap: 25px;                     
+    padding: 30px;                 
+}
+/* Styling für das Inhalts-Menü */
+.inhalts-menue {
+    background-color: black;       
+    width: 200px;                  
+    min-width: 200px;              
+    padding: 15px;
+    border-right: 4px solid #00BFFF; 
+    box-sizing: border-box;        
+    border-radius: 4px;
+}
+
+/* Weiße Menü-Überschrift */
+.inhalts-menue h2 {
+    color: white;
+    font-size: 1.2em;
+    margin-top: 0;
+    border-bottom: 1px solid #333; 
+    padding-bottom: 8px;
+}
+
+/* Listenpunkte und Einrückung entfernen */
+.inhalts-menue ul {
+    list-style-type: none;         
+    padding: 0;                    
+    margin: 10px 0 0 0;
+}
+
+.inhalts-menue li {
+    margin-bottom: 10px;           
+}
+
+/* Die Links im Menü */
+.inhalts-menue a {
+    color: white;
+    text-decoration: none;
+    /* Macht die gesamte Zeile klickbar */
+    display: block;                
+    padding: 6px;
+    border-radius: 3px;
+}
+
+.projekt-inhalt {
+    /* Nutzt elastisch den gesamten restlichen Platz */
+    flex: 1;                       
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.inhalts-menue a:hover {
+    background-color: #87CEFA;     
+    color: black;                  
+}
+
+.projekt-header-box {
+    background-color: #1B1C1D;     
+    color: white;                  
+    padding: 15px 20px;
+    border-radius: 6px;
+    
+    /* Flexbox, um Logo, Titel und Leiter in eine Reihe zu bringen */
+    display: flex;
+    flex-direction: row;
+    align-items: center;           
+    gap: 20px;                     
+}
+
+/* Das Logo-Bild */
+.projekt-header-box img {
+    height: 50px;                  
+    width: auto;
+}
+
+/* Der Titel 2 fache Größe und andere Schriftart */
+.projekt-header-box .projekt-titel {
+    font-size: 2em;                
+    font-family: "Arial", sans-serif; 
+    margin: 0;
+}
+
+/* Der Projektleiter wandert an den rechten Rand */
+.projekt-header-box .projektleiter {
+    margin: 0;
+    /* wandert an rechten Rand*/
+    margin-left: auto;             
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+/* Sticky-Verhalten für den Projekt-Header */
+.projekt-header-box {
+    position: sticky;              
+    top: 0;                        
+    z-index: 50;                   
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+}
+
+/* Standard-Zustand des Kommentarfelds */
+#kommentar {
+    background-color: #F0F4F8; 
+    border: 2px solid #1B1C1D;     
+    border-radius: 4px;
+    padding: 10px;
+    box-sizing: border-box;
+    width: 100%;                   
+    max-width: 500px;
+    /* Sanfter Übergang beim Klicken*/
+    transition: background-color 0.3s; 
+}
+
+#kommentar:focus {
+    background-color: #ffffff;     
+    border-color: #00BFFF;         
+    outline: none;                 
+}

@@ -5,8 +5,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Startseite von Proflix">
         <title>Startseite</title>
+        <link rel="stylesheet" type="text/css" href="css\style.css">
+        <link rel="stylesheet" type="text/css" href="css\index.css">
     </head>
     <body id="seitenanfang">
+        
         
         <header>
             <picture>
@@ -18,6 +21,20 @@
     
                 <img src="header320x34.png" alt="header">
             </picture> 
+            
+            <section class="login-box">
+                <h3>Login</h3>
+                <form action="ziel.html" method="POST">
+                    <label for="benutzername">Benutzername:</label>
+                    <input type="text" id="benutzername" name="benutzername">
+                    <br>
+                    <label for="passwort">Passwort:</label>
+                    <input type="password" id="passwort" name="passwort">
+                    <br><br>
+                    <button type="submit">Einloggen</button>
+                </form>
+                <p>Noch kein Konto? <a href="registrieren.html">Neu Registrieren</a></p>
+            </section>
         </header>
 
         <nav>
@@ -37,52 +54,46 @@
         </nav>
 
         <section>
-            <section>
-                <h1>Spannende Projekte von Blondie und Esel<br> Spaß an html</h1>
+           
+            <section class="welcome-banner">
+                <div class="welcome-text">
+                    <!--Text in zwei Elemente Aufteilen-->
+                    <h1 class ="line-1">Spannende Projekte von Blondie und Esel</h1>
+                    <h1 class ="line-2">Spaß an html</h1>
+                </div>
             </section>
-            <section>
-                <h2> Was ist Proflix</h2>
-                <p>
-                    Proflix dient der Verwaltung unserer Projekte.
-                    Hier hast du alles wichtige auf einen Blick!
-                </p>
-                
-                <video width="640" height="360" controls>
-                    <source src="video.mp4" type="video/mp4">
-                    Browser kann das Video nicht abspielen.
-                </video>
-            </section>
-            <section>
-                <h2>Neueste Projekte</h2>
-                <ul>
-                    <li>
-                        <h3><a href="projektseite.html">Projekt A</a></h3>
-                        <p>Das ist unser neuestes Projekt</p>
-                    </li>
-                    <li>
-                        <h3><a href="projektseite.html">Projekt B</a></h3>
-                        <p>Das ist nicht unser neuestes Projekt, aber immernoch recht neu</p>
-                    </li>
-                </ul>
+            <section class="startseite-layout">
+                <section class = "beschreibung">
+                    <h2> Was ist Proflix</h2>
+                    <p>
+                        Proflix dient der Verwaltung unserer Projekte.
+                        Hier hast du alles wichtige auf einen Blick!
+                    </p>
+
+                    <video width="640" height="360" controls>
+                        <source src="video.mp4" type="video/mp4">
+                        Browser kann das Video nicht abspielen.
+                    </video>
+                </section>
+                <nav class="projekte-navigation">
+                    <h2>Neueste Projekte</h2>
+                    <ul>
+                        <li>
+                            <h3><a href="projektseite.html">Projekt A</a></h3>
+                            <p>Das ist unser neuestes Projekt</p>
+                        </li>
+                        <li>
+                            <h3><a href="projektseite.html">Projekt B</a></h3>
+                            <p>Das ist nicht unser neuestes Projekt, aber immernoch recht neu</p>
+                        </li>
+                    </ul>
+                </nav>
             </section>
             
             
         </section>
 
         <footer>
-            <section>
-                <h3>Login</h3>
-                <form action="ziel.html" method="POST">
-                    <label for="benutzername">Benutzername:</label>
-                    <input type="text" id="benutzername" name="benutzername">
-                    <br>
-                    <label for="passwort">Passwort:</label>
-                    <input type="password" id="passwort" name="passwort">
-                    <br><br>
-                    <button type="submit">Einloggen</button>
-                </form>
-                <p>Noch kein Konto? <a href="registrieren.html">Neu Registrieren</a></p>
-            </section>
 
             <hr> <section>
                 <p>

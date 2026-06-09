@@ -6,11 +6,10 @@
         
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Übersicht über alle Projekte">
+        <meta name="description" content="Hier wird ein neues Projekt erstellt">
         
-        <title>Projektübersichtseite</title>
+        <title>Neues Projekt</title>
         <link rel="stylesheet" type="text/css" href="css\style.css">
-        <link rel="stylesheet" type="text/css" href="css\projekte.css">
     </head>
     
     <body id="seitenanfang">
@@ -70,49 +69,66 @@
                 </li>
             </ul>
         </nav>
+
         <section>
-            <h1>Projektübersicht</h1>
-
             <section>
-                <h2>Inhalts-Menü</h2>
-                <ul>
-                    <li><a href="#projekt1">Brunsmann Präsentation</a></li>
-                    <li><a href="#projekt2">Programmieren</a></li>
-                </ul>
+                <h1>Neues Projekt anlegen</h1>
+                <p>Füllen Sie das Formular aus, um ein neues Projekt in Proflix einzustellen.</p>
+
+                <form action="ziel.html" method="POST">
+
+                    <fieldset>
+                        <legend>Allgemeine Informationen</legend>
+
+                        <label for="titel">Projekttitel:</label><br>
+                        <input type="text" id="titel" name="titel"><br><br>
+
+                        <label for="start">Startdatum:</label><br>
+                        <input type="date" id="start" name="start"><br><br>
+
+                        <label for="ende">Enddatum:</label><br>
+                        <input type="date" id="ende" name="ende"><br><br>
+                    </fieldset>
+
+                    <br>
+
+                    <fieldset>
+                        <legend>Projektbeschreibungen</legend>
+
+                        <label for="kurz">Kurzbeschreibung:</label><br>
+                        <textarea id="kurz" name="kurz" rows="2" cols="40"></textarea><br><br>
+
+                        <label for="lang">Langbeschreibung:</label><br>
+                        <textarea id="lang" name="lang" rows="5" cols="40"></textarea><br><br>
+                    </fieldset>
+
+                    <br>
+
+                    <fieldset>
+                        <legend>Projektziele (2 Angaben möglich)</legend>
+
+                        <label for="ziel1">Ziel 1:</label><br>
+                        <input type="text" id="ziel1" name="ziel1"><br><br>
+
+                        <label for="ziel2">Ziel 2:</label><br>
+                        <input type="text" id="ziel2" name="ziel2"><br><br>
+                    </fieldset>
+
+                    <br>
+
+                    <fieldset>
+                        <legend>Mediendateien</legend>
+
+                        <label for="logo">Logodatei auswählen:</label><br>
+                        <input type="file" id="logo" name="logo"><br><br>
+                    </fieldset>
+
+                    <br>
+
+                    <input type="submit" value="Projekt speichern">
+                </form>
             </section>
-
-            <br>
-            
-            <section class="filter-bereich">
-                <a href="#" class="filter-button">Filter</a>
-                <ul class="filter-optionen">
-                    <li><a href="#">Nach Datum</a></li>
-                    <li><a href="#">Nach Leiter</a></li>
-                </ul>
-            </section>
-
-            <br><br>
-
-            <article id="projekt1">
-                <h2>Brunsmann Projekt</h2>
-                <p>Kurzbeschreibung: Hier geht es um eine freiwilige Präsentation zur Teamarbeit.</p>
-                <footer class="artikel-footer">
-                    <a href="projektseite.html">Zur Projektseite</a>
-                </footer>
-            </article>
-
-            <br>
-
-            <article id="projekt2">
-                <h2>Programmieren</h2>
-                <p>Kurzbeschreibung: Blondies kleines Programmiertagebuch.</p>
-                <footer class="artikel-footer">
-                    <a href="projektseite2.html">Zur Projektseite</a>
-                </footer>    
-            </article>
-
         </section>
-
 
         <footer>
             

@@ -1,0 +1,77 @@
+article {
+    background-color: #ffffff;    
+    border: 1px solid #1B1C1D;    
+    padding: 5px;                 
+    margin-bottom: 20px;          
+    border-radius: 4px;           
+    box-sizing: border-box;       
+}
+
+
+article h2 {
+    font-size: 1.5em;             
+    margin-top: 0;                
+    color: #1B1C1D;               
+}
+
+
+.artikel-footer {
+    background-color: #1B1C1D;   
+    padding: 0;                  
+    margin: 0;
+    display: inline-block;       
+}
+
+
+.artikel-footer a {
+    color: white;                
+    text-decoration: underline;  
+    padding: 5px 10px;           
+    display: inline-block;
+}
+
+
+.artikel-footer a:hover {
+    color: #87CEFA;              
+}
+
+
+.filter-button {
+    display: inline-block;
+    background-color: #1B1C1D;
+    color: white;
+    padding: 8px 15px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+/* Die Liste mit den Optionen wird standardmäßig KOMPLETT VERSTECKT */
+.filter-optionen {
+    display: none;               /* Macht das Element unsichtbar*/
+    list-style-type: none;
+    margin: 5px 0 0 0;
+    padding: 10px;
+    background-color: #ffffff;
+    border: 1px solid #1B1C1D;
+    width: 150px;
+    position: absolute;          /* Schwebt unabhängig über dem Inhalt (Folie 41) */
+    z-index: 10;
+}
+
+/* element wird sichbar wenn wir mit der maus drüber fahren */
+.filter-bereich:hover .filter-optionen {
+    display: block;              
+}
+
+/* styling für die Links innerhalb der Filterbox */
+.filter-optionen a {
+    color: black;
+    text-decoration: none;
+    display: block;
+    padding: 5px 0;
+}
+
+.filter-optionen a:hover {
+    color: #00BFFF;
+}
