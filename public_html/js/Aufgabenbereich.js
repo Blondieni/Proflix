@@ -2,9 +2,13 @@ class Aufgabenbereich {
     constructor(id, titel, kurzbeschreibung) {
         this._id = id;
         this._titel = titel;
+        
+        // Setter nutzen damit die Einschränkung greift (ohne "_")
         this.kurzbeschreibung = kurzbeschreibung;
     }
 
+
+    // Getter und Setter
     get kurzbeschreibung() {
         return this._kurzbeschreibung;
     }
