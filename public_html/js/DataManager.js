@@ -1,234 +1,223 @@
-// Globale Speicher für unsere fertigen Klassen-Objekte
+//Same-Origin-Policy (SOP) und CORS-Fehlern (Folie 63 & 64) kein Header
+
+
+
+// Globale Speicher für die Klassenobjekte
 let serverProjekte = [];
 let serverAufgabenbereiche = [];
 let serverArtefakte = [];
 
-function ladeDatenVomServer() {
-    console.log("Starte Datenabruf mit präzisem Struktur-Mapping...");
+// Globale Speicher für Verknüpfungsklassen
+let serverProjektAufgabenbereiche = []; 
+let serverProjektArtefakte = [];
 
-    // 1. (1 Pkt) Rufen Sie die Projektdaten ab
-    fetch("https://scl.fh-bielefeld.de/WBA/projects.json")
-        .then(function(response) {
-            return response.json();
-        })
+// ---
+// AUFGABEN 1-3: Datenabruf, Objekte und Verknüpfungen (GET)
+// ---
+function ladeDatenVomServer() {
+    console.log("Starte Datenabruf, Objekt erstellung und Verknüpfung");
+
+    // 1. Projektdaten abrufen
+    fetch("json/projects.json")
+        .then(function(response) { return response.json(); })
         .then(function(projectsRohdaten) {
             console.log("Projekte Rohdaten geladen:", projectsRohdaten);
-            
-            // MAP-SCHLEIFE: JSON -> Klasse Projekt
             for (let i = 0; i < projectsRohdaten.length; i++) {
                 let roh = projectsRohdaten[i];
-                
-                // Konvertiere den JSON-Start-String in ein echtes JavaScript-Date-Objekt
-                let startDatumObjekt = new Date(roh.start);
-                
-                // Parameter: id, titel, kurzbeschreibung, logoPfad, startDatum
-                let neuesProjekt = new Projekt(
-                    roh.id, 
-                    roh.name, 
-                    roh.shortdesc, 
-                    roh.logourl, 
-                    startDatumObjekt
-                );
+                let neuesProjekt = new Projekt(roh.id, roh.name, roh.shortdesc, roh.logourl, new Date(roh.start));
                 serverProjekte.push(neuesProjekt);
             }
-
-            // 2. (1 Pkt) Rufen Sie auch die Aufgabenbereiche ab
-            return fetch("https://scl.fh-bielefeld.de/WBA/tasks.json");
+            
+            // 2. Aufgabenbereiche abrufen
+            return fetch("json/tasks.json");
         })
-        .then(function(response) {
-            return response.json();
-        })
+        .then(function(response) { return response.json(); })
         .then(function(tasksRohdaten) {
             console.log("Aufgabenbereiche Rohdaten geladen:", tasksRohdaten);
-
-            // MAP-SCHLEIFE: JSON -> Klasse Aufgabenbereich
             for (let i = 0; i < tasksRohdaten.length; i++) {
                 let roh = tasksRohdaten[i];
-                
-                // Parameter: id, titel, kurzbeschreibung
-                let neuerBereich = new Aufgabenbereich(
-                    roh.id, 
-                    roh.name, 
-                    roh.shortdesc
-                );
+                let neuerBereich = new Aufgabenbereich(roh.id, roh.name, roh.shortdesc);
                 serverAufgabenbereiche.push(neuerBereich);
-            }
 
-            // 2. (1 Pkt) Rufen Sie auch die Artefaktdaten ab
-            return fetch("https://scl.fh-bielefeld.de/WBA/artefacts.json");
+                // Verknüpfung von Projekt und Aufgabenbereich
+                // Projekt_Aufgabenbereich Objekt erstellen
+                let verknuepfung = new Projekt_Aufgabenbereich(roh.project, roh.id);
+                serverProjektAufgabenbereiche.push(verknuepfung);
+            }
+            
+            // 3. Artefaktdaten abrufen
+            return fetch("json/artefacts.json");
         })
-        .then(function(response) {
-            return response.json();
-        })
+        .then(function(response) { return response.json(); })
         .then(function(artefactsRohdaten) {
             console.log("Artefakte Rohdaten geladen:", artefactsRohdaten);
-
-            // 3. (1 Pkt) Erzeugen Sie Objekte & Verknüpfung auflösen
             for (let i = 0; i < artefactsRohdaten.length; i++) {
                 let roh = artefactsRohdaten[i];
                 
-                // Suchen des passenden Aufgabenbereichs über die 'taskid' aus der JSON
-                let passenderBereich = null;
-                for (let j = 0; j < serverAufgabenbereiche.length; j++) {
-                    if (serverAufgabenbereiche[j]._id === roh.taskid) {
-                        passenderBereich = serverAufgabenbereiche[j];
-                        break;
-                    }
-                }
+                // Aufgabenbereich suchen
+                let passenderBereich = serverAufgabenbereiche.find(b => b._id === roh.taskid);
 
-                // In der JSON ist die Zeit ein String wie "7:30". Da deine Alt-Logik 
-                // mit Nummern rechnet, parsen wir die Stunden als Fließkommazahl (z.B. 7.5)
+                // Geplante Zeit umrechnen
                 let stundenNum = 0;
                 if (roh.planedtime) {
+                    // HH:MM
                     let teile = roh.planedtime.split(":");
                     stundenNum = parseInt(teile[0]) + (parseInt(teile[1]) / 60);
                 }
 
-                // Parameter: id, titel, kurzbeschreibung, aufgabenbereichRef, geplanteZeit
-                let neuesArtefakt = new Artefakt(
-                    roh.id, 
-                    roh.name, 
-                    roh.shortdesc, 
-                    passenderBereich, 
-                    stundenNum
-                );
+                // Artefakt erstellen
+                let neuesArtefakt = new Artefakt(roh.id, roh.name, roh.shortdesc, passenderBereich, stundenNum);
                 serverArtefakte.push(neuesArtefakt);
-            }
 
-            console.log("--- FERTIG: Aufgaben 1, 2 und 3 mit passendem Mapping gelöst ---");
-            console.log("Gezüchtete Projekte (Beispiel 1):", serverProjekte[0]);
-            console.log("Gezüchtete Artefakte mit verknüpftem Objekt:", serverArtefakte[0]);
+                // Projekte und Artefakte verknüpfen
+                // a) Projekt-ID über Projekt_Aufgabenbereich finden nachsehen
+                let projektId = null;
+                let paVerknuepfung = serverProjektAufgabenbereiche.find(pa => pa._aufgabenbereichID === roh.taskid);
+                if (paVerknuepfung) {
+                    projektId = paVerknuepfung._projektId;
+                }
+
+                // b) Tatsächliche Zeit aus der json umrechnen (für Projekt_Artefakt)
+                let realStundenNum = 0;
+                if (roh.realtime) {
+                    // HH:MM
+                    let realTeile = roh.realtime.split(":");
+                    realStundenNum = parseInt(realTeile[0]) + (parseInt(realTeile[1]) / 60);
+                }
+
+                // c) Projekt_Artefakt erstellen und speichern
+                if (projektId !== null) {
+                    let projektArtefaktLink = new Projekt_Artefakt(projektId, roh.id, realStundenNum);
+                    serverProjektArtefakte.push(projektArtefaktLink);
+                }
+            }
+            
+            console.log("Erstellte Projekt-Aufgabenbereich Verknüpfungen:", serverProjektAufgabenbereiche);
+            console.log("Erstellte Projekt-Artefakt Verknüpfungen:", serverProjektArtefakte);
+            console.log("Abgeschlossen: Aufgaben 1, 2 und 3 erfolgreich");
+            
+            
+            // Test ob berechneProjektlaufzeit noch funktioniert
+            if(serverProjekte.length > 0) {
+                let testLaufzeit = serverProjekte[0].berechneProjektlaufzeit(serverArtefakte, serverProjektArtefakte);
+                console.log("TEST Laufzeit für Projekt 1 ('" + serverProjekte[0]._titel + "'): " + testLaufzeit + " Stunden");
+            }
         })
         .catch(function(err) {
-            console.log("Opps, Something went wrong!", err);
+            console.error("Fehler beim Laden der Daten:", err);
         });
 }
 
-// Ausführen, wenn das DOM bereit ist
-window.addEventListener("DOMContentLoaded", function() {
-    // 1. Zuerst bestehende Daten laden (Aufgabe 1-3)
-    ladeDatenVomServer();
+// ---
+// AUFGABE 4 (CORS API) (POST)
+// ---
+function sendeDatenAnServer(datenBundle) {
+    // Test nach Vorgabe (404)
+    const apiURL = "https://scl.fh-bielefeld.de/WBA/projectsAPI"; 
     
-    // 2. Aufgabe 5: Prüfen, ob noch ungesendete Daten vom letzten Mal im LocalStorage liegen
-    pruefeUndSendeWartendeDaten();
-
-    // 2. Test für Aufgabe 4: Wir erstellen ein fiktives neues Projekt zum Testen
-    // (Datenstruktur ähnlich wie in deiner neues_projekt.html)
-    let testProjekt = {
-        id: 999,
-        titel: "Mein WBA Testprojekt",
-        kurzbeschreibung: "Ein temporäres Projekt zum Testen der API.",
-        logoPfad: "logo_projekt.svg",
-        startDatum: new Date()
-    };
-
-    // Funktion aufrufen und abschicken
-    sendeProjektAnServer(testProjekt);
-});
-
-// Aufgabe 4: Neues Projekt an die API senden (Sicher und standardkonform)
-function sendeProjektAnServer(projektObjekt) {
-    // Originale URL aus der Aufgabenstellung
-    const apiURL = "https://scl.fh-bielefeld.de/WBA/projectsAPI";
-
-    console.log("Versuche, Daten an API zu senden...", projektObjekt);
+    // Test für (200-ok)
+    //const apiURL = "json/projects.json";
+    //const apiURL = "https://scl.fh-bielefeld.de/WBA/projects.json"; 
 
     const konfiguration = {
         method: 'POST',
-        mode: 'cors',   // Streng nach Vorlesung: CORS-Sicherheit bleibt voll aktiv!
-        headers: {
-            'content-type': 'application/json'
-        },
-        body: JSON.stringify(projektObjekt)
+        mode: 'cors',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(datenBundle) // Komplettes Bundle (Projekt, Bereich, Artefakt) senden
     };
 
     fetch(apiURL, konfiguration)
         .then(function(response) {
             if (response.ok) {
                 console.log("Erfolg: API hat die Daten akzeptiert!");
-                entferneProjektAusLocalStorage(); // Aufgabe 6
+                entferneDatenAusLocalStorage(); // Aufgabe 6: Im Erfolgsfall löschen
                 return response.json();
             } else {
+                // Bei 404 oder Serverfehlern wird ein Error geworfenern
                 throw new Error("Server lieferte Status: " + response.status);
             }
         })
         .then(function(daten) {
-            console.log("Erfolgreich gesendet, Antwort:", daten);
+            console.log("Erfolgreich vom Server verarbeitet:", daten);
         })
         .catch(function(fehler) {
-            // Jede CORS-Blockade und jeder 404-Fehler landet sicher hier im catch!
-            console.log("API-Aufruf fehlgeschlagen (erwartet): " + fehler.message);
-            
-            // Logik für den Demonstrationstest beim Neuladen
-            let lokaleProjekteRaw = localStorage.getItem("wartendeProjekte");
-            if (lokaleProjekteRaw && JSON.parse(lokaleProjekteRaw).length > 0) {
-                // Das Projekt existiert bereits im Speicher -> Das ist der automatische
-                // Wiederholungsversuch nach dem Neuladen (Aufgabe 5 & 6)
-                console.log("Wiederholungsversuch erkannt. Simuliere erfolgreiche Verarbeitung laut Hinweis.");
-                entferneProjektAusLocalStorage(); // Löschen aus dem Speicher
-            } else {
-                // Das ist der allererste Versuch auf der Seite -> Im LocalStorage sichern
-                speichereImLocalStorage(projektObjekt);
-            }
+            console.log("API-Aufruf fehlgeschlagen: " + fehler.message);
+            // Aufgabe 5: Im Fehlerfall sicher offline im LocalStorage parken
+            speichereImLocalStorage(datenBundle);
         });
 }
 
-// Aufgabe 5: Im LocalStorage ablegen, wenn API nicht erreichbar ist
-function speichereImLocalStorage(projektObjekt) {
-    console.log("Aufgabe 5: Senden fehlgeschlagen. Speichere im LocalStorage...");
+// ==========================================
+// AUFGABE 5-6: Localstorage
+// ==========================================
+function speichereImLocalStorage(datenBundle) {
+    let lokaleDatenRaw = localStorage.getItem("wartendeDaten");
     
-    // Wir holen uns, falls schon vorhanden, die Liste der wartenden Projekte
-    let lokaleProjekteRaw = localStorage.getItem("wartendeProjekte");
-    let projekteListe = [];
+    // Wenn schon Daten da sind, auslesen, ansonsten leeres Array erstellen
+    let datenListe = lokaleDatenRaw ? JSON.parse(lokaleDatenRaw) : [];
     
-    if (lokaleProjekteRaw) {
-        // Wenn schon Projekte drin sind, parsen wir den JSON-String wieder in ein Array
-        projekteListe = JSON.parse(lokaleProjekteRaw);
-    }
+    // Daten in die Liste packen
+    datenListe.push(datenBundle);
     
-    // Das neue Projekt der Liste hinzufügen
-    projekteListe.push(projektObjekt);
+    // Wieder im LocalStorage speichern
+    localStorage.setItem("wartendeDaten", JSON.stringify(datenListe));
     
-    // Die aktualisierte Liste wieder als JSON-String in den LocalStorage schreiben
-    localStorage.setItem("wartendeProjekte", JSON.stringify(projekteListe));
-    console.log("Projekt erfolgreich offline geparkt. Anzahl wartender Projekte: " + projekteListe.length);
+    console.log("Aufgabe 5: Projekt, Aufgabenbereich und Artefakt offline geparkt.");
+    console.log("Aktuell wartende Pakete im Speicher: " + datenListe.length);
 }
 
-// Aufgabe 5: Prüfen, ob noch alte Daten im LocalStorage liegen und versuchen zu senden
+// Prüfen beim Neuladen, ob noch ungesendete alte Daten vorhanden (Aufgabe 5)
 function pruefeUndSendeWartendeDaten() {
-    let lokaleProjekteRaw = localStorage.getItem("wartendeProjekte");
-    
-    if (lokaleProjekteRaw) {
-        let projekteListe = JSON.parse(lokaleProjekteRaw);
-        console.log("Aufgabe 5: Gefundene wartende Projekte im LocalStorage beim Laden: " + projekteListe.length);
-        
-        // Versuchen, das erste wartende Projekt erneut zu senden
-        if (projekteListe.length > 0) {
-            console.log("Versuche erneuten Sendeversuch für:", projekteListe[0]);
-            sendeProjektAnServer(projekteListe[0]);
+    let lokaleDatenRaw = localStorage.getItem("wartendeDaten");
+    if (lokaleDatenRaw) {
+        let datenListe = JSON.parse(lokaleDatenRaw);
+        if (datenListe.length > 0) {
+            console.log("Aufgabe 5: Wiederholungsversuch für wartende Daten gestartet");
+            sendeDatenAnServer(datenListe[0]);
         }
     }
 }
 
-// Aufgabe 6: Erstes Projekt aus der Liste löschen, wenn es erfolgreich übertragen wurde
-function entferneProjektAusLocalStorage() {
-    let lokaleProjekteRaw = localStorage.getItem("wartendeProjekte");
-    
-    if (lokaleProjekteRaw) {
-        let projekteListe = JSON.parse(lokaleProjekteRaw);
-        
-        if (projekteListe.length > 0) {
-            // .shift() entfernt das ERSTE Element aus dem Array
-            let entferntesProjekt = projekteListe.shift();
-            console.log("Aufgabe 6: '" + entferntesProjekt.titel + "' erfolgreich übertragen. Wird aus LocalStorage gelöscht.");
+// Entfernt das erfolgreich übertragene Paket aus dem Localstorage (Aufgabe 6)
+function entferneDatenAusLocalStorage() {
+    let lokaleDatenRaw = localStorage.getItem("wartendeDaten");
+    if (lokaleDatenRaw) {
+        let datenListe = JSON.parse(lokaleDatenRaw);
+        if (datenListe.length > 0) {
+            let entfernt = datenListe.shift(); // Das älteste/erste Element löschen
+            console.log("Aufgabe 6: '" + entfernt.projekt.titel + "' erfolgreich übertragen. Wird aus LocalStorage entfernt.");
             
-            // Wenn die Liste jetzt leer ist, können wir den Key ganz löschen
-            if (projekteListe.length === 0) {
-                localStorage.removeItem("wartendeProjekte");
+            if (datenListe.length === 0) {
+                localStorage.removeItem("wartendeDaten");
             } else {
-                // Sonst die restlichen Projekte zurückschreiben
-                localStorage.setItem("wartendeProjekte", JSON.stringify(projekteListe));
+                localStorage.setItem("wartendeDaten", JSON.stringify(datenListe));
             }
         }
     }
 }
+
+// ---
+// Intialisierung (DOM)
+// ---
+window.addEventListener("DOMContentLoaded", function() {
+    // 1. Serverdaten per GET laden & mappen
+    ladeDatenVomServer();
+    
+    // Prüfen, ob wir einen Backlog haben
+    let lokaleDatenRaw = localStorage.getItem("wartendeDaten");
+    let datenListe = lokaleDatenRaw ? JSON.parse(lokaleDatenRaw) : [];
+
+    if (datenListe.length > 0) {
+        // a: Es gibt wartende Daten -> Wiederholungsversuch (Aufgabe 5)
+        pruefeUndSendeWartendeDaten();
+    } else {
+        // b: Speicher ist leer -> Erzeuge neues Bundle zum Senden (Aufgabe 4)
+        console.log("Erzeuge neues Test-Bundle zum Senden...");
+        let testDatenBundle = {
+            projekt: { id: 999, titel: "Neues WBA Projekt", kurzbeschreibung: "Ein Testprojekt" },
+            aufgabenbereich: { id: 888, titel: "Konzeption", kurzbeschreibung: "Diagrammerstellung" },
+            artefakt: { id: 777, titel: "UI Entwurf", geplanteZeit: 4 }
+        };
+        sendeDatenAnServer(testDatenBundle);
+    }
+});
